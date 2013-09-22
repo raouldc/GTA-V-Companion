@@ -2,17 +2,19 @@ package com.nakedninjastudios.gtavcompanion;
 
 import java.util.Locale;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.Tab;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import com.actionbarsherlock.app.SherlockFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
 
-public class MainActivity extends FragmentActivity implements
+import com.actionbarsherlock.view.Menu;
+
+public class MainActivity extends SherlockFragmentActivity implements
 		ActionBar.TabListener {
 
 	/**
@@ -36,7 +38,7 @@ public class MainActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_main);
 
 		// Set up the action bar.
-		final ActionBar actionBar = getActionBar();
+		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		// Create the adapter that will return a fragment for each of the three
@@ -74,26 +76,8 @@ public class MainActivity extends FragmentActivity implements
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getSupportMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
-
-	@Override
-	public void onTabSelected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, switch to the corresponding page in
-		// the ViewPager.
-		mViewPager.setCurrentItem(tab.getPosition());
-	}
-
-	@Override
-	public void onTabUnselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
-
-	@Override
-	public void onTabReselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
 	}
 
 	/**
@@ -107,7 +91,7 @@ public class MainActivity extends FragmentActivity implements
 		}
 
 		@Override
-		public Fragment getItem(int position) {
+		public SherlockFragment getItem(int position) {
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
@@ -141,5 +125,28 @@ public class MainActivity extends FragmentActivity implements
 			}
 			return null;
 		}
+	}
+
+	@Override
+	public void onTabSelected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
+		// When the given tab is selected, switch to the corresponding page in
+				// the ViewPager.
+				mViewPager.setCurrentItem(tab.getPosition());
+		
+	}
+
+	@Override
+	public void onTabUnselected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTabReselected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
 	}
 }

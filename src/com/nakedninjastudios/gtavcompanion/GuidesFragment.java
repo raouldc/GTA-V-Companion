@@ -3,21 +3,20 @@ package com.nakedninjastudios.gtavcompanion;
 import java.io.IOException;
 import java.io.InputStream;
 
-import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
-import android.app.FragmentTransaction;
+import com.actionbarsherlock.app.SherlockFragment;
+
+import com.actionbarsherlock.app.ActionBar.Tab;
+import com.actionbarsherlock.app.ActionBar.TabListener;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-public class GuidesFragment extends Fragment implements TabListener {
+public class GuidesFragment extends SherlockFragment implements TabListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -46,20 +45,24 @@ public class GuidesFragment extends Fragment implements TabListener {
 	    return bitmap;
 	 }
 
+
 	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+	public void onTabSelected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+	public void onTabUnselected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+	public void onTabReselected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
 		// TODO Auto-generated method stub
 		
 	}
