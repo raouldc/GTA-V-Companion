@@ -39,8 +39,16 @@ public class XMLParser {
 			String tagname = parser.getName();
 			switch (eventType) {
 			case XmlPullParser.START_TAG:
-				if (tagname.equalsIgnoreCase("chapter")) {
-					listItem = new GTAListItem();
+				if (type.equals("walkthrough")) {
+					if (tagname.equalsIgnoreCase("chapter")) {
+						listItem = new GTAListItem();
+					}
+				}
+				else if (type.equals("achievements"))
+				{
+					if (tagname.equalsIgnoreCase("item")) {
+						listItem = new GTAListItem();
+					}
 				}
 				break;
 
@@ -49,18 +57,21 @@ public class XMLParser {
 				break;
 
 			case XmlPullParser.END_TAG:
-				if (tagname.equalsIgnoreCase("chapter")) {
+				if (tagname.equalsIgnoreCase("chapter") || tagname.equalsIgnoreCase("item")) {
 					courseList.add(listItem);
 				} else if (tagname.equalsIgnoreCase("title")) {
 					if (type.equals("walkthrough")) {
-						listItem.setTitle("Mission "+count+": "+text);
+						listItem.setTitle("Mission " + count + ": " + text);
 						count++;
-					}
-					else{
+					} else {
 						listItem.setTitle(text);
 					}
 				} else if (tagname.equalsIgnoreCase("content")) {
 					listItem.setContent(text);
+				} else if (tagname.equalsIgnoreCase("trophy")) {
+					listItem.setTrophy(text);
+				} else if (tagname.equalsIgnoreCase("points")) {
+					listItem.setPoints(text);
 				}
 				break;
 

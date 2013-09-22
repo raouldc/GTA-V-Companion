@@ -23,6 +23,24 @@ public class GTAListItem {
 	}
 
 	private String content,title;
+	private String points = "None";
+	private String trophy = "None";
+
+	public String getPoints() {
+		return points;
+	}
+
+	public void setPoints(String points) {
+		this.points = points;
+	}
+
+	public String getTrophy() {
+		return trophy;
+	}
+
+	public void setTrophy(String trophy) {
+		this.trophy = trophy;
+	}
 	
 
 }

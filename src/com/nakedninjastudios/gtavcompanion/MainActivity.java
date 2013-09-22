@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -169,14 +170,14 @@ public class MainActivity extends AbstractTabStackNavigationActivity {
 		return null;
 	}
 	
-	public SherlockFragment getFragment(int position) {
+	public Fragment getFragment(int position) {
 		switch (position) {
 		case 0:
 			return new GuidesFragment();
 		case 1:
 			return new GuidesFragment();
 		case 2:
-			return new GuidesFragment();
+			return new AchievementsListFragment();
 		}
 		return null;
 	}
