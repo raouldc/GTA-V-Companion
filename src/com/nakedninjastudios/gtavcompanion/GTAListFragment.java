@@ -18,10 +18,12 @@ import com.nakedninjastudios.gtavcompanion.tabsframework.TabInfo;
 
 public class GTAListFragment extends SherlockListFragment {
 
+	private ArrayList<GTAListItem> aList;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		ArrayList<GTAListItem> aList = null;
+		aList = null;
 		try {
 			XMLParser xp = new XMLParser(getActivity().getAssets().open("XML/walkthrough.xml"),"walkthrough");
 			aList = xp.parseXML();
@@ -48,14 +50,17 @@ public class GTAListFragment extends SherlockListFragment {
 
 		// first, you need to get the reference to the currently shown tab in
 		// order to add the fragment onto this tab
-//		final TabInfo tab = getTabStack().getCurrentTabInfo();
-//
-//		// DemoStringFragment fragment = new DemoStringFragment();
-//		// fragment.setText(characters[position]);
-//
-//		// second, you push the fragment. It becomes visible and the up button
-//		// is shown
-//		getTabStack().pushFragment(tab, fragment);
+		final TabInfo tab = getTabStack().getCurrentTabInfo();
+
+		GTAListDetailTextFragment fragment = new GTAListDetailTextFragment();
+		Bundle bundle = new Bundle();
+		bundle.putString("title",aList.get(position).getTitle());
+		bundle.putString("content",aList.get(position).getContent());
+		fragment.setArguments(bundle);
+
+		// second, you push the fragment. It becomes visible and the up button
+		// is shown
+		getTabStack().pushFragment(tab, fragment);
 
 	}
 
