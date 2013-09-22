@@ -60,6 +60,7 @@ public class GuidesFragment extends SherlockFragment{
 
 		});
 
+		getSherlockActivity().getSupportActionBar().setTitle("GTA V Companion");
 		return rootView;
 	}
 

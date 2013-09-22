@@ -38,6 +38,7 @@ public class GTAListFragment extends SherlockListFragment {
 				inflater.getContext(), android.R.layout.simple_list_item_1,
 				aList);
 		setListAdapter(adapter);
+		getSherlockActivity().getSupportActionBar().setTitle("Walkthrough");
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 
